@@ -1,6 +1,7 @@
 $(function () {
-    var layer = layui.layer
+    getUserinfo()
 
+    var layer = layui.layer
     // 点击按钮实现退出功能
     $('#btnLogout').on('click', function () {
         layer.confirm('确定退出登录?', { icon: 3, title: '提示' }, function (index) {
@@ -13,7 +14,7 @@ $(function () {
             layer.close(index);
         });
     })
-    getUserinfo()
+
 
 })
 // 定义getUserinfo函数
@@ -28,13 +29,13 @@ function getUserinfo() {
                 return layui.layer.msg('获取用户信息失败！')
             }
             // 调用函数渲染用户头像
-            renderAvata(res.data)
+            renderAvatar(res.data)
         }
     })
 }
 
 // 渲染用户头像
-function renderAvata(user) {
+function renderAvatar(user) {
     // 1.获取用户名称
     var name = user.nickname || user.username
     // 2.设置欢迎的文本
